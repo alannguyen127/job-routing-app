@@ -25,7 +25,16 @@ export default function App() {
   const state = location.state;
   const router = createBrowserRouter(
     createRoutesFromElements(
-      <Route path="/" element={<Layout />} errorElement={<ErrorPage />}>
+      <Route
+        path="/"
+        element={<Layout />}
+        errorElement={<ErrorPage />}
+        location={
+          location.state?.backgroundLocation
+            ? location.state.backgroundLocation
+            : location
+        }
+      >
         <Route path="/" element={<HomePage />} loader={dataLoader} />
         <Route path="/:page" element={<HomePage />} loader={dataLoader} />
         <Route path="/login" element={<LoginModal />} loader={dataLoader} />
