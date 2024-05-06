@@ -25,10 +25,10 @@ function DetailPageModal() {
   const [open, setOpen] = useState(true);
 
   const navigate = useNavigate();
-  const jobData = useLoaderData();
+  const { jobs } = useLoaderData();
   const params = useParams();
   const jobId = params.id;
-  const job = jobData.find((job) => job.id === jobId);
+  const job = jobs.find((job) => job.id === jobId);
   const navigation = useNavigation();
   if (navigation.state === "loading") {
     return <SpinningIcon />;

@@ -8,10 +8,10 @@ import SpinningIcon from "../components/SpinningIcon";
 import "../SpinningIcon.css";
 
 function DetailPage() {
-  const jobData = useLoaderData();
+  const { jobs } = useLoaderData();
   const params = useParams();
   const jobId = params.id;
-  const job = jobData.find((job) => job.id === jobId);
+  const job = jobs.find((job) => job.id === jobId);
   const navigation = useNavigation();
   if (navigation.state === "loading") {
     return <SpinningIcon />;

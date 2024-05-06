@@ -1,13 +1,15 @@
-import * as React from "react";
+import React, { useContext } from "react";
 import { styled, alpha } from "@mui/material/styles";
 import AppBar from "@mui/material/AppBar";
 import Box from "@mui/material/Box";
 import Toolbar from "@mui/material/Toolbar";
 import LoginIcon from "@mui/icons-material/Login";
+import LogoutIcon from "@mui/icons-material/Logout";
+import Avatar from "@mui/material/Avatar";
 import Typography from "@mui/material/Typography";
 import InputBase from "@mui/material/InputBase";
-import { useNavigate } from "react-router-dom";
-
+import { useNavigate, useSearchParams } from "react-router-dom";
+import AuthContext from "../auth/AuthContext";
 import SearchIcon from "@mui/icons-material/Search";
 import { Button } from "@mui/material";
 
@@ -51,7 +53,26 @@ const StyledInputBase = styled(InputBase)(({ theme }) => ({
   },
 }));
 export default function SearchAppBar() {
+  const auth = useContext(AuthContext);
+  const [searchParams, setSearchParams] = useSearchParams();
+  const q = searchParams.get("q");
   const navigate = useNavigate();
+  const handlClickLogin = (event) => {
+    navigate("/login");
+  };
+
+  const handlClickLogout = (event) => {
+    auth.signout(() => {
+      navigate("/");
+    });
+  };
+
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    let formData = new FormData(event.currentTarget);
+    let q = formData.get("q");
+    setSearchParams({ q: q });
+  };
   return (
     <Box sx={{ flexGrow: 1 }}>
       <AppBar position="static">
@@ -65,32 +86,45 @@ export default function SearchAppBar() {
           >
             Job Routing
           </Typography>
-          <Search>
-            <SearchIconWrapper>
-              <SearchIcon />
-            </SearchIconWrapper>
-            <StyledInputBase
-              placeholder="Search…"
-              inputProps={{ "aria-label": "search" }}
-            />
-          </Search>
-          <div
-            style={{
-              display: "flex",
-              marginLeft: "auto",
-              alignItems: "center",
-            }}
-          >
-            <LoginIcon />
+          <Box component={"form"} onSubmit={handleSubmit}>
+            {" "}
+            <Search>
+              <SearchIconWrapper>
+                <SearchIcon />
+              </SearchIconWrapper>
+              <StyledInputBase
+                name="q"
+                placeholder="Search…"
+                defaultValue={q ?? undefined}
+                inputProps={{ "aria-label": "search" }}
+              />
+            </Search>
+          </Box>
+
+          <Box sx={{ flexGrow: 1 }} />
+          {auth?.user ? (
+            <>
+              <Button
+                onClick={handlClickLogout}
+                variant="contained"
+                startIcon={<LogoutIcon />}
+              >
+                Logout
+              </Button>
+              <Avatar
+                src="/images/avatar/1.jpg"
+                sx={{ width: 40, height: 40, ml: 1 }}
+              />
+            </>
+          ) : (
             <Button
-              variant="h3"
-              noWrap
-              pl={"10px"}
-              onClick={() => navigate("/login")}
+              onClick={handlClickLogin}
+              variant="contained"
+              startIcon={<LoginIcon />}
             >
-              Sign in
+              Login
             </Button>
-          </div>
+          )}
         </Toolbar>
       </AppBar>
     </Box>
