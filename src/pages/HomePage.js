@@ -7,11 +7,17 @@ import { useParams, useLoaderData, useSearchParams } from "react-router-dom";
 import { dataLoader } from "../loader/dataLoader";
 
 export async function loader() {
-  const jobs = await dataLoader();
+  // q em đã setSearchParam trong component SearchAppBar, làm sao để biến q này có thể lấy đươc dữ liệu từ params. Nhờ anh giúp em.
+  const q = "";
+  const jobs = await dataLoader(q);
   return { jobs };
 }
 
 function HomePage() {
+  // Test
+  const [searchParams, setSearchParams] = useSearchParams();
+  const q = searchParams.get("q");
+  //
   const { jobs } = useLoaderData();
   // console.log(jobs);
   const params = useParams();
