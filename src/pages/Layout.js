@@ -4,8 +4,8 @@ import SearchAppBar from "../components/SearchAppBar";
 import Stack from "@mui/material/Stack";
 
 function Layout() {
-  // const location = useLocation();
-  // console.log(location);
+  const location = useLocation();
+  console.log(location);
   return (
     <Stack
       sx={{

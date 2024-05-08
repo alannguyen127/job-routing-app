@@ -35,7 +35,7 @@ export default function App() {
       >
         <Route path="/" element={<HomePage />} loader={jobLoader} />
         <Route path="/:page" element={<HomePage />} loader={jobLoader} />
-        <Route path="/login" element={<JLogin />} loader={jobLoader} />
+        <Route path="/login" element={<JLogin />} />
 
         {auth.user ? (
           <Route

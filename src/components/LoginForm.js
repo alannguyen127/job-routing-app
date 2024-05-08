@@ -11,6 +11,7 @@ import Box from "@mui/material/Box";
 import AuthContext from "../auth/AuthContext";
 import Button from "@mui/material/Button";
 import Typography from "@mui/material/Typography";
+import { useNavigate } from "react-router-dom";
 
 const style = {
   bgcolor: "background.paper",
@@ -22,6 +23,7 @@ const style = {
 };
 
 function LoginForm({ callback }) {
+  const navigate = useNavigate();
   const [username] = useState("huannghiem");
   const [password] = useState("2024");
 
@@ -32,7 +34,7 @@ function LoginForm({ callback }) {
     event.preventDefault();
   };
   const handleLogin = () => {
-    auth.singin(username, callback);
+    auth.singin(username, () => navigate("/"));
   };
 
   return (
