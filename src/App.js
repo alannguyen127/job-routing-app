@@ -13,7 +13,7 @@ import LoginModal from "./components/LoginModal";
 import Layout from "./pages/Layout";
 import AuthContext from "./auth/AuthContext";
 import JLogin from "./pages/Login";
-
+import "./App.css";
 // import { createTheme, ThemeProvider } from "@mui/material";
 // import CssBaseline from "@mui/material/CssBaseline";
 

@@ -3,7 +3,7 @@ import React from "react";
 import Grid from "@mui/material/Grid";
 import JobCard from "../components/JobCard";
 import Paginations from "../components/Paginations";
-import { useParams, useLoaderData, useSearchParams } from "react-router-dom";
+import { useParams, useLoaderData } from "react-router-dom";
 import { dataLoader } from "../loader/dataLoader";
 
 export async function loader({ request }) {

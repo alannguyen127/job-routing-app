@@ -113,8 +113,11 @@ export default function SearchAppBar() {
               </Button>
               <Avatar
                 src="/images/avatar/1.jpg"
-                sx={{ width: 40, height: 40, ml: 1 }}
+                sx={{ width: 40, height: 40, ml: 1, mr: 1 }}
               />
+              <Typography variant="h6" noWrap component="div">
+                {auth.user}
+              </Typography>
             </>
           ) : (
             <Button
