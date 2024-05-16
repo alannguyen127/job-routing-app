@@ -17,7 +17,12 @@ export default function BasicChips({ skill }) {
           label={skill}
           variant="outlined"
           size="small"
-          sx={{ margin: "3px", backgroundColor: "#d74742", border: "0px" }}
+          sx={{
+            margin: "3px",
+            backgroundColor: "#d74742",
+            border: "0px",
+            color: "white",
+          }}
         />
       ))}
     </Stack>

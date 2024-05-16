@@ -6,36 +6,52 @@ import CardActions from "@mui/material/CardActions";
 import Button from "@mui/material/Button";
 import { useNavigate, useLocation } from "react-router-dom";
 import SkillChip from "../components/SkillChip";
+import { styled } from "@mui/material/styles";
+import { Stack } from "@mui/material";
+
+const CardStyle = styled(Card)(({ theme }) => ({
+  boxShadow: "none",
+  border: "1px solid black",
+  width: "100%",
+  maxWidth: "350px",
+  minWidth: "270px",
+  height: "320px",
+  margin: "auto",
+  backgroundColor: theme.palette.primary.light,
+}));
 
 export default function ActionAreaCard({ job }) {
   const navigate = useNavigate();
   let location = useLocation();
 
   return (
-    <Card sx={{ minHeight: "320px", position: "relative" }}>
-      <CardContent>
-        <Typography gutterBottom variant="h5" component="div">
-          {job.title}
-          <hr />
-        </Typography>
-        <SkillChip skill={job.skills} />
-        <Typography
-          variant="body2"
-          color="text.secondary"
-          sx={{ pt: "10px" }}
-          textAlign={"justify"}
-        >
-          {job.description}
-        </Typography>
-      </CardContent>
-      <CardActions
-      // sx={{
-      //   position: "absolute",
-      //   bottom: "10px",
-      //   left: "50%",
-      //   transform: "translate(-50%)",
-      // }}
-      >
+    <CardStyle ariant="outlined">
+      <Stack>
+        <CardContent>
+          <Typography
+            gutterBottom
+            variant="subtitle1"
+            component="div"
+            sx={{ color: (theme) => theme.palette.common.white }}
+          >
+            {job.title}
+            <hr />
+          </Typography>
+          <SkillChip skill={job.skills} />
+          <Typography
+            variant="body2"
+            sx={{
+              pt: "10px",
+              whiteSpace: "nowrap",
+              overflow: "hidden",
+              textOverflow: "ellipsis",
+              color: (theme) => theme.palette.common.white,
+            }}
+          >
+            {job.description}
+          </Typography>
+        </CardContent>
+
         <Button
           size="small"
           variant="contained"
@@ -46,11 +62,13 @@ export default function ActionAreaCard({ job }) {
             "&:hover": {
               backgroundColor: "white",
             },
+            color: "black",
+            m: "80px auto 40px",
           }}
         >
           Learn More
         </Button>
-      </CardActions>
-    </Card>
+      </Stack>
+    </CardStyle>
   );
 }

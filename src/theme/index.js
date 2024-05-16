@@ -57,7 +57,7 @@ function ThemeProvider({ children }) {
       primary: PRIMARY,
       secondary: SECONDARY,
       success: SUCCESS,
-      text: { primary: GREY[800], secondary: GREY[600], disabled: GREY[500] },
+      text: { primary: GREY[800], secondary: GREY[600], disabled: "GREY[500]" },
       background: { paper: "#fff", default: "#fff", neutral: GREY[200] },
       action: {
         active: GREY[600],

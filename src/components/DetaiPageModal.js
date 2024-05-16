@@ -50,7 +50,12 @@ function DetailPageModal() {
   return (
     <Modal open={open} onClose={handleClose}>
       <Container sx={style}>
-        <Typography variant="h6" marginTop={3} fontWeight={"bold"}>
+        <Typography
+          variant="h5"
+          marginTop={3}
+          fontWeight={"bold"}
+          textAlign={"center"}
+        >
           Job Title: {job.title}
         </Typography>
         <Box

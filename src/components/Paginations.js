@@ -13,19 +13,19 @@ export default function BasicPagination({ pages }) {
     <Stack spacing={2}>
       <Pagination
         count={pages}
-        color="primary"
         onChange={handleChange}
+        color="primary"
         sx={{
           display: "flex",
           padding: "20px",
           justifyContent: "center",
           alignItems: "center",
-          "& .Mui-selected": {
-            backgroundColor: "#d74742",
-            "&:hover": {
-              backgroundColor: "#d95f5b",
-            },
-          },
+          // "& .Mui-selected": {
+          //   backgroundColor: "#d74742",
+          //   "&:hover": {
+          //     backgroundColor: "#d95f5b",
+          //   },
+          // },
 
           //Work well on desktop but not mobile:
           // position: "absolute",
